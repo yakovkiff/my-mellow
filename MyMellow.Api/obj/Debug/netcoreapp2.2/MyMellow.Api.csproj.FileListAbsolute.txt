@@ -1,0 +1,14 @@
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/bin/Debug/netcoreapp2.2/MyMellow.Api.deps.json
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/bin/Debug/netcoreapp2.2/MyMellow.Api.runtimeconfig.json
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/bin/Debug/netcoreapp2.2/MyMellow.Api.runtimeconfig.dev.json
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/bin/Debug/netcoreapp2.2/MyMellow.Api.dll
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/bin/Debug/netcoreapp2.2/MyMellow.Api.pdb
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/obj/Debug/netcoreapp2.2/MyMellow.Api.csprojAssemblyReference.cache
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/obj/Debug/netcoreapp2.2/MyMellow.Api.csproj.CoreCompileInputs.cache
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/obj/Debug/netcoreapp2.2/MyMellow.Api.RazorAssemblyInfo.cache
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/obj/Debug/netcoreapp2.2/MyMellow.Api.RazorAssemblyInfo.cs
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/obj/Debug/netcoreapp2.2/MyMellow.Api.AssemblyInfoInputs.cache
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/obj/Debug/netcoreapp2.2/MyMellow.Api.AssemblyInfo.cs
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/obj/Debug/netcoreapp2.2/MyMellow.Api.RazorTargetAssemblyInfo.cache
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/obj/Debug/netcoreapp2.2/MyMellow.Api.dll
+/Users/yakovkiffel/dev/code/MyMellow/MyMellow.Api/obj/Debug/netcoreapp2.2/MyMellow.Api.pdb
