@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MyMellow.Infrastructure.DbContexts;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -53,11 +55,11 @@ namespace MyMellow.Api
                     options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
                 });
 
-            // services.AddDbContext<CdVerifyContext>(options =>
-            //     {
-            //         var connectionString = Configuration.GetConnectionString("CdVerifyContextSql");
-            //         options.UseSqlServer(connectionString);
-            //     });
+            services.AddDbContext<MyMellowContext>(options =>
+                {
+                    var connectionString = Configuration.GetConnectionString("MyMellowDb");
+                    options.UseNpgsql(connectionString);
+                });
 
         }
 

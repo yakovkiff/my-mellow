@@ -13,4 +13,9 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MyMellow.Domain\MyMellow.Domain.csproj" />
+    <ProjectReference Include="..\MyMellow.Infrastructure\MyMellow.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
