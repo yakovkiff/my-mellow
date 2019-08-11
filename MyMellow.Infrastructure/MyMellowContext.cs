@@ -70,7 +70,7 @@ namespace MyMellow.Infrastructure
                 .HasForeignKey(ph => ph.TaskFlowId);
             
             modelBuilder.Entity<Task>()
-                .HasMany(t => t.ChildMaps)
+                .HasMany(t => t.ParentMaps)
                 .WithOne(m => m.Parent)
                 .HasForeignKey(m => m.ParentId);
 
