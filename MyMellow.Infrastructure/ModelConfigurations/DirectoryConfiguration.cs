@@ -2,12 +2,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyMellow.Domain.Models;
 
-public class DirectoryConfiguration : IEntityTypeConfiguration<Directory> 
+namespace ModelConfigurations
 {
-    public void Configure(EntityTypeBuilder<Directory> builder)
+    public class DirectoryConfiguration : IEntityTypeConfiguration<Directory> 
     {
-        builder.Property(t => t.Title)
-            .IsRequired()
-            .HasMaxLength(50);
+        public void Configure(EntityTypeBuilder<Directory> builder)
+        {
+            builder.Property(t => t.Title)
+                .IsRequired()
+                .HasMaxLength(50);
+        }
     }
+
 }

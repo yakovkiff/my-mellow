@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ModelConfigurations;
 using MyMellow.Domain.Models;
 
 namespace MyMellow.Infrastructure

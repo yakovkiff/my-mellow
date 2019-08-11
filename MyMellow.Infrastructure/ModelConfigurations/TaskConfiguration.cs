@@ -2,12 +2,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyMellow.Domain.Models;
 
-public class TaskConfiguration : IEntityTypeConfiguration<Task> 
+namespace ModelConfigurations
 {
-    public void Configure(EntityTypeBuilder<Task> builder)
+    public class TaskConfiguration : IEntityTypeConfiguration<Task> 
     {
-        builder.Property(t => t.Name)
-            .IsRequired()
-            .HasMaxLength(50);
+        public void Configure(EntityTypeBuilder<Task> builder)
+        {
+            builder.Property(t => t.Name)
+                .IsRequired()
+                .HasMaxLength(50);
+        }
     }
+
 }
