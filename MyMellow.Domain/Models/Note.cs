@@ -14,5 +14,6 @@ namespace MyMellow.Domain.Models
         public string Content { get; set; }
 
         public ICollection<TagNoteMap> TagMaps { get; set; }
+        public ICollection<NoteSchedule> Schedules { get; set; }
     }
 }

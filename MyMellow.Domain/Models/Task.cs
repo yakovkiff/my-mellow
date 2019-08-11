@@ -19,5 +19,6 @@ namespace MyMellow.Domain.Models
         public ICollection<TagTaskMap> TagMaps { get; set; }
         public ICollection<TaskMap> ChildMaps { get; set; }
         public ICollection<TaskMap> ParentMaps { get; set; }
+        public ICollection<TaskSchedule> Schedules { get; set; }
     }
 }

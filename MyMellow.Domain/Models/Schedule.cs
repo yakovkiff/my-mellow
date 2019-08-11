@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace MyMellow.Domain.Models
 {
@@ -10,5 +11,8 @@ namespace MyMellow.Domain.Models
         public DateTime? EndAt { get; set; }
         public TimeSpan? RepeatEvery { get; set; }
         public bool AlertByEmail { get; set; }
+
+        public ICollection<NoteSchedule> Notes { get; set; }
+        public ICollection<TaskSchedule> Tasks { get; set; }
     }
 }

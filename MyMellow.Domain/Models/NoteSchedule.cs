@@ -10,6 +10,6 @@ namespace MyMellow.Domain.Models
         public Note Note { get; set; }
 
         public int ScheduleId { get; set; }
-        public int Schedule { get; set; }
+        public Schedule Schedule { get; set; }
     }
 }
