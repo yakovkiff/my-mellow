@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMellow.Domain", "MyMellow
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMellow.Infrastructure", "MyMellow.Infrastructure\MyMellow.Infrastructure.csproj", "{9C1F325C-7978-425F-B784-27B61399A79B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMellow.Middleware", "MyMellow.Middleware\MyMellow.Middleware.csproj", "{21F9DAC4-A510-42AD-8E7C-9CAD528B9E04}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMellow.Test.Infrastructure", "MyMellow.Test.Infrastructure\MyMellow.Test.Infrastructure.csproj", "{8CD9B34D-9014-465A-9E88-3B2944414576}"
 EndProject
 Global
