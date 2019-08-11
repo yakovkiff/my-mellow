@@ -13,8 +13,8 @@ namespace MyMellow.Domain.Models
         public string Name { get; set; }
         public short OrderNumber { get; set; }
         
-        public DateTime StartAt { get; set; }
-        public DateTime EndAt { get; set; }
+        // public DateTime CreatedAt { get; set; }
+        // public DateTime? CompletedAt { get; set; }
 
         public ICollection<TagTaskMap> TagMaps { get; set; }
         public ICollection<TaskMap> ChildMaps { get; set; }

@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using MyMellow.Infrastructure.DbContexts;
+using MyMellow.Infrastructure;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
