@@ -67,7 +67,8 @@ namespace MyMellow.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors(x => x
-                .AllowAnyOrigin()
+                // .AllowAnyOrigin()
+                .WithOrigins("http//localhost:4200")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());
