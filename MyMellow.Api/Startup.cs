@@ -50,7 +50,7 @@ namespace MyMellow.Api
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(options =>
                 {
-                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                    // options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
                     options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
                 });
@@ -68,7 +68,7 @@ namespace MyMellow.Api
         {
             app.UseCors(x => x
                 // .AllowAnyOrigin()
-                .WithOrigins("http//localhost:4200")
+                .WithOrigins("http://localhost:4200")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());

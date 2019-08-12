@@ -34,7 +34,7 @@ namespace MyMellow.Api.Controllers
             return Ok(task);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<ActionResult<Domain.Models.Task>> Update(int id, [FromBody] Domain.Models.Task task)
         {
             if (id != task.Id)
@@ -56,7 +56,7 @@ namespace MyMellow.Api.Controllers
             return Ok(update);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<Domain.Models.Task>> Delete(int id)
         {
             var task = await _context.Task.FindAsync(id);
