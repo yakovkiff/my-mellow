@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace MyMellow.Infrastructure.Migrations
+namespace MyMellow.DbContext.Migrations
 {
     public partial class InitialCreate : Migration
     {

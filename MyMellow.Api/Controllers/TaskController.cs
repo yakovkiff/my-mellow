@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyMellow.Infrastructure;
+using MyMellow.DbContext;
 
 namespace MyMellow.Api.Controllers
 {

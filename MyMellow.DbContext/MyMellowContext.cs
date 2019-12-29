@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using ModelConfigurations;
+using MyMellow.DbContext.ModelConfigurations;
 using MyMellow.Domain.Models;
 
-namespace MyMellow.Infrastructure
+namespace MyMellow.DbContext
 {
-    public class MyMellowContext : DbContext
+    public class MyMellowContext : Microsoft.EntityFrameworkCore.DbContext
     {
         public MyMellowContext(DbContextOptions<MyMellowContext> options) : base(options)
         {

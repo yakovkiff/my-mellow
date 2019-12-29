@@ -2,11 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyMellow.Domain.Models;
 
-namespace ModelConfigurations
+namespace MyMellow.DbContext.ModelConfigurations
 {
-    public class TaskPhaseConfiguration : IEntityTypeConfiguration<TaskPhase> 
+    public class TaskFlowConfiguration : IEntityTypeConfiguration<TaskFlow> 
     {
-        public void Configure(EntityTypeBuilder<TaskPhase> builder)
+        public void Configure(EntityTypeBuilder<TaskFlow> builder)
         {
             builder.Property(t => t.Name)
                 .IsRequired()

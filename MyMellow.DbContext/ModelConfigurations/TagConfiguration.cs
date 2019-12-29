@@ -2,15 +2,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyMellow.Domain.Models;
 
-namespace ModelConfigurations
+namespace MyMellow.DbContext.ModelConfigurations
 {
-    public class TaskFlowConfiguration : IEntityTypeConfiguration<TaskFlow> 
+    public class TagConfiguration : IEntityTypeConfiguration<Tag> 
     {
-        public void Configure(EntityTypeBuilder<TaskFlow> builder)
+        public void Configure(EntityTypeBuilder<Tag> builder)
         {
             builder.Property(t => t.Name)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(20);
         }
     }
 

@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyMellow.Domain\MyMellow.Domain.csproj" />
-    <ProjectReference Include="..\MyMellow.Infrastructure\MyMellow.Infrastructure.csproj" />
+    <ProjectReference Include="..\MyMellow.DbContext\MyMellow.DbContext.csproj" />
   </ItemGroup>
 
 </Project>

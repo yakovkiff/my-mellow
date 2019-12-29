@@ -2,16 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyMellow.Infrastructure;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace MyMellow.Infrastructure.Migrations
+namespace MyMellow.DbContext.Migrations
 {
     [DbContext(typeof(MyMellowContext))]
-    partial class MyMellowContextModelSnapshot : ModelSnapshot
+    [Migration("20190811163513_InitialFullCreate")]
+    partial class InitialFullCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

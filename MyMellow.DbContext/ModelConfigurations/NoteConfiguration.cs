@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyMellow.Domain.Models;
 
-namespace ModelConfigurations
+namespace MyMellow.DbContext.ModelConfigurations
 {
     public class NoteConfiguration : IEntityTypeConfiguration<Note> 
     {

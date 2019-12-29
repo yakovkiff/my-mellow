@@ -3,10 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyMellow.Infrastructure;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace MyMellow.Infrastructure.Migrations
+namespace MyMellow.DbContext.Migrations
 {
     [DbContext(typeof(MyMellowContext))]
     [Migration("20190623134652_InitialCreate")]
