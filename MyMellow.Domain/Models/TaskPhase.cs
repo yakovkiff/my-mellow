@@ -2,7 +2,7 @@ using System;
 
 namespace MyMellow.Domain.Models
 {
-    public class TaskPhase
+    public class TaskPhase // should be unique for TaskFlowId and Name
     {
         public int Id { get; set; }
 

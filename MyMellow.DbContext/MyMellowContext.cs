@@ -26,12 +26,7 @@ namespace MyMellow.DbContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new DirectoryConfiguration());
-            modelBuilder.ApplyConfiguration(new NoteConfiguration());
-            modelBuilder.ApplyConfiguration(new TagConfiguration());
-            modelBuilder.ApplyConfiguration(new TaskConfiguration());
-            modelBuilder.ApplyConfiguration(new TaskFlowConfiguration());
-            modelBuilder.ApplyConfiguration(new TaskPhaseConfiguration());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(TaskConfiguration).Assembly);
 
             #region associations
 
