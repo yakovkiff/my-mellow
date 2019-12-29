@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyMellow.DbContext;
+using MyMellow.Domain.Dtos;
 
 namespace MyMellow.Api.Controllers
 {
@@ -17,10 +19,31 @@ namespace MyMellow.Api.Controllers
             _context = context;
         }
 
+        // (a) Get all tasks
+        // (b) Get all root tasks (filter?)
+        // (c) can filter by startDate and endDate
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Domain.Models.Task>>> Get()
         {
-            var tasks = await _context.Task.ToListAsync();
+            var tasks = await _context.Task
+                .Select(t => new TaskDto
+                {
+                    Id = t.Id,
+                    Name = t.Name,
+                    Tags = t.TagMaps.Select(m => new TagDto
+                    {
+                        Id = m.Tag.Id,
+                        Name = m.Tag.Name
+                    }).ToList(),
+                    Schedules = t.Schedules.Select(s => new ScheduleDto
+                    {
+                        Id = s.Schedule.Id,
+                        StartAt = s.Schedule.StartAt,
+                        EndAt = s.Schedule.EndAt,
+                        RepeatEvery = s.Schedule.RepeatEvery,
+                        AlertByEmail = s.Schedule.AlertByEmail
+                    }).ToList()
+                }).ToListAsync();
 
             return Ok(tasks);
         }
