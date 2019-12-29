@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMellow.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMellow.Test.Infrastructure", "MyMellow.Test.Infrastructure\MyMellow.Test.Infrastructure.csproj", "{8CD9B34D-9014-465A-9E88-3B2944414576}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMellow.Seeder", "MyMellow.Seeder\MyMellow.Seeder.csproj", "{39E3C724-66C3-4273-AF7D-760BD9A3A739}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,5 +128,17 @@ Global
 		{8CD9B34D-9014-465A-9E88-3B2944414576}.Release|x64.Build.0 = Release|Any CPU
 		{8CD9B34D-9014-465A-9E88-3B2944414576}.Release|x86.ActiveCfg = Release|Any CPU
 		{8CD9B34D-9014-465A-9E88-3B2944414576}.Release|x86.Build.0 = Release|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Debug|x64.Build.0 = Debug|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Debug|x86.Build.0 = Debug|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Release|x64.ActiveCfg = Release|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Release|x64.Build.0 = Release|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Release|x86.ActiveCfg = Release|Any CPU
+		{39E3C724-66C3-4273-AF7D-760BD9A3A739}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
