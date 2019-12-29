@@ -16,6 +16,16 @@ namespace MyMellow.DbContext.ModelConfigurations
                 .Property(s => s.EndAt)
                 .HasConversion(v => v, v => v != null ? DateTime.SpecifyKind((DateTime)v, DateTimeKind.Utc) : (DateTime?)null);
 
+            builder
+                .HasMany(s => s.Notes)
+                .WithOne(n => n.Schedule)
+                .HasForeignKey(n => n.ScheduleId);
+
+            builder
+                .HasMany(s => s.Tasks)
+                .WithOne(t => t.Schedule)
+                .HasForeignKey(t => t.ScheduleId);
+
         }
     }
 }

@@ -14,6 +14,16 @@ namespace MyMellow.DbContext.ModelConfigurations
 
             builder.Property(x => x.Content)
                 .HasMaxLength(4000);
+            
+            builder
+                .HasMany(n => n.TagMaps)
+                .WithOne(m => m.Note)
+                .HasForeignKey(m => m.NoteId);
+
+            builder
+                .HasMany(n => n.Schedules)
+                .WithOne(s => s.Note)
+                .HasForeignKey(s => s.NoteId);
         }
     }
 

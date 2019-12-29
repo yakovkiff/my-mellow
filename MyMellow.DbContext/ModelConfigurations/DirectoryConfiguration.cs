@@ -10,6 +10,22 @@ namespace MyMellow.DbContext.ModelConfigurations
             builder.Property(t => t.Title)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            builder
+                .HasMany(d => d.Children)
+                .WithOne(c => c.Parent)
+                .HasForeignKey(c => c.ParentId);
+            
+            builder
+                .HasMany(d => d.Notes)
+                .WithOne(n => n.Directory)
+                .HasForeignKey(n => n.DirectoryId);
+
+            builder
+                .HasMany(d => d.TagMaps)
+                .WithOne(m => m.Directory)
+                .HasForeignKey(m => m.DirectoryId);
+
         }
     }
 
