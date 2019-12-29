@@ -61,7 +61,7 @@ namespace MyMellow.DbContext
 
             modelBuilder.Entity<TaskFlow>()
                 .HasMany(f => f.TaskFlowForTaskMaps)
-                .WithOne(m => m.Flow)
+                .WithOne(m => m.ChildFlow)
                 .HasForeignKey(m => m.TaskFlowId);
 
             modelBuilder.Entity<TaskFlow>()
@@ -81,7 +81,7 @@ namespace MyMellow.DbContext
 
             modelBuilder.Entity<Task>()
                 .HasMany(f => f.ChildTaskFlowMaps)
-                .WithOne(m => m.Task)
+                .WithOne(m => m.ParentTask)
                 .HasForeignKey(m => m.TaskId);
             
             modelBuilder.Entity<Task>()

@@ -5,9 +5,9 @@ namespace MyMellow.Domain.Models
         public int Id { get; set; }
 
         public int TaskId { get; set; }
-        public Task Task { get; set; }
+        public Task ParentTask { get; set; }
 
         public int TaskFlowId { get; set; }
-        public TaskFlow Flow { get; set; }
+        public TaskFlow ChildFlow { get; set; }
     }
 }
