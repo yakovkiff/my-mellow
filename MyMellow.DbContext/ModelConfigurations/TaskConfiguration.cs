@@ -13,12 +13,12 @@ namespace MyMellow.DbContext.ModelConfigurations
                 .HasMaxLength(50);
 
             builder
-                .HasMany(f => f.ParentTaskFlowMaps)
+                .HasMany(f => f.ChildTaskFlowMaps)
                 .WithOne(m => m.Task)
                 .HasForeignKey(m => m.TaskId);
 
             builder
-                .HasMany(f => f.ChildTaskFlowMaps)
+                .HasMany(f => f.ParentTaskFlowMaps)
                 .WithOne(m => m.ParentTask)
                 .HasForeignKey(m => m.TaskId);
             

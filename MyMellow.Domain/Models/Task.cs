@@ -12,8 +12,8 @@ namespace MyMellow.Domain.Models
         // public DateTime CreatedAt { get; set; }
         // public DateTime? CompletedAt { get; set; }
 
-        public ICollection<TaskInTaskFlowMap> ParentTaskFlowMaps { get; set; }
-        public ICollection<TaskFlowForTaskMap> ChildTaskFlowMaps { get; set; }
+        public ICollection<TaskInTaskFlowMap> ChildTaskFlowMaps { get; set; }
+        public ICollection<TaskFlowForTaskMap> ParentTaskFlowMaps { get; set; }
         public ICollection<TagTaskMap> TagMaps { get; set; }
         public ICollection<TaskMap> ChildTaskMaps { get; set; }
         public ICollection<TaskMap> ParentTaskMaps { get; set; }

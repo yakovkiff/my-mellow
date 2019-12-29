@@ -23,7 +23,7 @@ namespace MyMellow.Api.Controllers
         // (b) Get all root tasks (filter?)
         // (c) can filter by startDate and endDate
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Domain.Models.Task>>> Get()
+        public async Task<ActionResult<IEnumerable<TaskDto>>> Get()
         {
             var tasks = await _context.Task
                 .Select(t => new TaskDto
@@ -48,8 +48,61 @@ namespace MyMellow.Api.Controllers
             return Ok(tasks);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TaskDto>> Get(int id)
+        {
+            var tasks = await _context.Task
+                .Where(t => t.Id == id)
+                .Select(t => new TaskDto
+                {
+                    Id = t.Id,
+                    Name = t.Name,
+                    Tags = t.TagMaps.Select(m => new TagDto
+                    {
+                        Id = m.Tag.Id,
+                        Name = m.Tag.Name
+                    }).ToList(),
+                    Schedules = t.Schedules.Select(s => new ScheduleDto
+                    {
+                        Id = s.Schedule.Id,
+                        StartAt = s.Schedule.StartAt,
+                        EndAt = s.Schedule.EndAt,
+                        RepeatEvery = s.Schedule.RepeatEvery,
+                        AlertByEmail = s.Schedule.AlertByEmail
+                    }).ToList(),
+                    ChildTasks = t.ParentTaskMaps.Select(m => new TaskDto
+                    {
+                        Id = m.Child.Id,
+                        Name = m.Child.Name
+                    }).ToList(),
+                    ParentTasks = t.ChildTaskMaps.Select(m => new TaskDto
+                    {
+                        Id = m.Parent.Id,
+                        Name = m.Parent.Name
+                    }).ToList(),
+                    ChildTaskFlows = t.ParentTaskFlowMaps.Select(m => new TaskFlowDto
+                    {
+                        Id = m.ChildFlow.Id,
+                        Name = m.ChildFlow.Name
+                    }).ToList(),
+                    ParentTaskFlowSpots = t.ChildTaskFlowMaps.Select(m => new TaskFlowSpotDto
+                    {
+                        Id = m.Id,
+                        OrderNumber = m.OrderNumber,
+                        TaskFlow = new TaskFlowDto
+                        {
+                            Id = m.Flow.Id,
+                            Name = m.Flow.Name
+                        }
+                    }).ToList()
+                }).SingleOrDefaultAsync();
+
+            return Ok(tasks);
+        }
+
+
         [HttpPost]
-        public async Task<ActionResult<Domain.Models.Task>> Create([FromBody] Domain.Models.Task task)
+        public async Task<ActionResult<TaskDto>> Create([FromBody] Domain.Models.Task task)
         {
             _context.Task.Add(task);
             await _context.SaveChangesAsync();
@@ -58,7 +111,7 @@ namespace MyMellow.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Domain.Models.Task>> Update(int id, [FromBody] Domain.Models.Task task)
+        public async Task<ActionResult<TaskDto>> Update(int id, [FromBody] Domain.Models.Task task)
         {
             if (id != task.Id)
             {
@@ -80,7 +133,7 @@ namespace MyMellow.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Domain.Models.Task>> Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             var task = await _context.Task.FindAsync(id);
 
@@ -93,7 +146,7 @@ namespace MyMellow.Api.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return NoContent();
         }
 
 

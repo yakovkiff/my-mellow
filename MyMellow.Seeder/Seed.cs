@@ -86,7 +86,7 @@ namespace MyMellow.Seeder
                         }
                     }
                 },
-                ChildTaskFlowMaps = new List<TaskFlowForTaskMap>
+                ParentTaskFlowMaps = new List<TaskFlowForTaskMap>
                 {
                     new TaskFlowForTaskMap
                     {
@@ -102,7 +102,7 @@ namespace MyMellow.Seeder
             var doEveningStuff = new Task
             {
                 Name = "Do Evening Stuff",
-                ChildTaskFlowMaps = new List<TaskFlowForTaskMap>
+                ParentTaskFlowMaps = new List<TaskFlowForTaskMap>
                 {
                     new TaskFlowForTaskMap
                     {
