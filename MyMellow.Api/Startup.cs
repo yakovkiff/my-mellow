@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MyMellow.DbContext;
+using MyMellow.Domain;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -27,9 +28,12 @@ namespace MyMellow.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {            
+        {
+            var appSettingsSection = Configuration.GetSection(nameof(AppSettings));
+            services.Configure<AppSettings>(option => appSettingsSection.Bind(option));
+            var settings = appSettingsSection.Get<AppSettings>();
+            
             services.AddCors();
 
             services.Configure<CookiePolicyOptions>(options =>
@@ -38,8 +42,6 @@ namespace MyMellow.Api
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-            // services.AddMediatR(typeof(CreateApplicationCommand).GetTypeInfo().Assembly);
 
             services
                 .AddMvc(options =>
@@ -64,11 +66,10 @@ namespace MyMellow.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IOptions<AppSettings> appSettings)
         {
             app.UseCors(x => x
-                // .AllowAnyOrigin()
-                .WithOrigins("http://localhost:4200")
+                .WithOrigins(appSettings.Value.AllowedOrigins)
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());
