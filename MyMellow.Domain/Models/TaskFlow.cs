@@ -9,7 +9,9 @@ namespace MyMellow.Domain.Models
 
         public string Name { get; set; }
 
-        public ICollection<TaskPhase> Phases { get; set; }
-        public ICollection<Task> Tasks { get; set; }
+        public ICollection<TaskFlowInTaskFlowMap> ParentMaps { get; set;}
+        public ICollection<TaskFlowInTaskFlowMap> ChildMaps { get; set; }
+        public ICollection<TaskInTaskFlowMap> TaskInTaskFlowMaps { get; set; }
+        public ICollection<TaskFlowForTaskMap> TaskFlowForTaskMaps { get; set; }
     }
 }

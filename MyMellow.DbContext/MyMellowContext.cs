@@ -21,7 +21,6 @@ namespace MyMellow.DbContext
         public DbSet<Task> Task { get; set; }
         public DbSet<TaskFlow> TaskFlow { get; set; }
         public DbSet<TaskMap> TaskMap { get; set; }
-        public DbSet<TaskPhase> TaskPhase { get; set; }
         public DbSet<TaskSchedule> TaskSchedule { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -56,22 +55,42 @@ namespace MyMellow.DbContext
                 .HasForeignKey(s => s.NoteId);
 
             modelBuilder.Entity<TaskFlow>()
-                .HasMany(f => f.Phases)
-                .WithOne(ph => ph.TaskFlow)
-                .HasForeignKey(ph => ph.TaskFlowId);
-            
+                .HasMany(f => f.TaskInTaskFlowMaps)
+                .WithOne(m => m.Flow)
+                .HasForeignKey(m => m.TaskFlowId);
+
             modelBuilder.Entity<TaskFlow>()
-                .HasMany(f => f.Tasks)
-                .WithOne(ph => ph.Flow)
-                .HasForeignKey(ph => ph.TaskFlowId);
+                .HasMany(f => f.TaskFlowForTaskMaps)
+                .WithOne(m => m.Flow)
+                .HasForeignKey(m => m.TaskFlowId);
+
+            modelBuilder.Entity<TaskFlow>()
+                .HasMany(f => f.ParentMaps)
+                .WithOne(m => m.Parent)
+                .HasForeignKey(m => m.ParentId);
+
+            modelBuilder.Entity<TaskFlow>()
+                .HasMany(f => f.ChildMaps)
+                .WithOne(m => m.Child)
+                .HasForeignKey(m => m.ChildId);
             
             modelBuilder.Entity<Task>()
-                .HasMany(t => t.ParentMaps)
+                .HasMany(f => f.ParentTaskFlowMaps)
+                .WithOne(m => m.Task)
+                .HasForeignKey(m => m.TaskId);
+
+            modelBuilder.Entity<Task>()
+                .HasMany(f => f.ChildTaskFlowMaps)
+                .WithOne(m => m.Task)
+                .HasForeignKey(m => m.TaskId);
+            
+            modelBuilder.Entity<Task>()
+                .HasMany(t => t.ParentTaskMaps)
                 .WithOne(m => m.Parent)
                 .HasForeignKey(m => m.ParentId);
 
             modelBuilder.Entity<Task>()
-                .HasMany(t => t.ChildMaps)
+                .HasMany(t => t.ChildTaskMaps)
                 .WithOne(m => m.Child)
                 .HasForeignKey(m => m.ChildId);
 

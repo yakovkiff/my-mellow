@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyMellow.DbContext;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -9,9 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyMellow.DbContext.Migrations
 {
     [DbContext(typeof(MyMellowContext))]
-    partial class MyMellowContextModelSnapshot : ModelSnapshot
+    [Migration("20191229055537_ReOrientTasksDomainAroundTaskFlowMaps")]
+    partial class ReOrientTasksDomainAroundTaskFlowMaps
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,45 +192,7 @@ namespace MyMellow.DbContext.Migrations
                     b.ToTable("TaskFlow");
                 });
 
-            modelBuilder.Entity("MyMellow.Domain.Models.TaskFlowForTaskMap", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("TaskFlowId");
-
-                    b.Property<int>("TaskId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TaskFlowId");
-
-                    b.HasIndex("TaskId");
-
-                    b.ToTable("TaskFlowForTaskMap");
-                });
-
-            modelBuilder.Entity("MyMellow.Domain.Models.TaskFlowInTaskFlowMap", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ChildId");
-
-                    b.Property<short>("OrderNumber");
-
-                    b.Property<int>("ParentId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ChildId");
-
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("TaskFlowInTaskFlowMap");
-                });
-
-            modelBuilder.Entity("MyMellow.Domain.Models.TaskInTaskFlowMap", b =>
+            modelBuilder.Entity("MyMellow.Domain.Models.TaskFlowMap", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -245,7 +209,7 @@ namespace MyMellow.DbContext.Migrations
 
                     b.HasIndex("TaskId");
 
-                    b.ToTable("TaskInTaskFlowMap");
+                    b.ToTable("TaskFlowMap");
                 });
 
             modelBuilder.Entity("MyMellow.Domain.Models.TaskMap", b =>
@@ -351,41 +315,15 @@ namespace MyMellow.DbContext.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MyMellow.Domain.Models.TaskFlowForTaskMap", b =>
+            modelBuilder.Entity("MyMellow.Domain.Models.TaskFlowMap", b =>
                 {
                     b.HasOne("MyMellow.Domain.Models.TaskFlow", "Flow")
-                        .WithMany("TaskFlowForTaskMaps")
+                        .WithMany("TaskFlowMaps")
                         .HasForeignKey("TaskFlowId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("MyMellow.Domain.Models.Task", "Task")
-                        .WithMany("TaskFlowForTaskMaps")
-                        .HasForeignKey("TaskId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MyMellow.Domain.Models.TaskFlowInTaskFlowMap", b =>
-                {
-                    b.HasOne("MyMellow.Domain.Models.TaskFlow", "Child")
-                        .WithMany("ChildMaps")
-                        .HasForeignKey("ChildId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MyMellow.Domain.Models.TaskFlow", "Parent")
-                        .WithMany("ParentMaps")
-                        .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MyMellow.Domain.Models.TaskInTaskFlowMap", b =>
-                {
-                    b.HasOne("MyMellow.Domain.Models.TaskFlow", "Flow")
-                        .WithMany("TaskInTaskFlowMaps")
-                        .HasForeignKey("TaskFlowId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MyMellow.Domain.Models.Task", "Task")
-                        .WithMany("TaskInTaskFlowMaps")
+                        .WithMany("TaskFlowMaps")
                         .HasForeignKey("TaskId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

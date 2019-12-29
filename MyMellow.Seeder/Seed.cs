@@ -8,56 +8,80 @@ namespace MyMellow.Seeder
     {
         public static void SeedSampleData(this MyMellowContext context)
         {
-            var taskFlows = new List<TaskFlow>
+            var shit = new Task
             {
-                new TaskFlow
+                Name = "Shit"
+            };
+
+            var shower = new Task
+            {
+                Name = "Shower"
+            };
+
+            var shave = new Task
+            {
+                Name = "Shave"
+            };
+
+            var morningFlow = new TaskFlow
+            {
+                Name = "Morning Flow",
+                TaskInTaskFlowMaps = new List<TaskInTaskFlowMap>
                 {
-                    Name = "To-Do",
-                    Phases = new List<TaskPhase>
+                    new TaskInTaskFlowMap
                     {
-                        new TaskPhase
-                        {
-                            Name = "New",
-                            OrderNumber = 1
-                        },
-                        new TaskPhase
-                        {
-                            Name = "In Progress",
-                            OrderNumber = 2
-                        },
-                        new TaskPhase
-                        {
-                            Name = "Complete",
-                            OrderNumber = 3
-                        },
-                        new TaskPhase
-                        {
-                            Name = "Cancelled",
-                            OrderNumber = 4
-                        }
+                        Task = shit,
+                        OrderNumber = 1
                     },
-                    Tasks = new List<Task>
+                    new TaskInTaskFlowMap
                     {
-                        new Task
-                        {
-                            Name = "Shit",
-                            OrderNumber = 1
-                        },
-                        new Task
-                        {
-                            Name = "Shower",
-                            OrderNumber = 2
-                        },
-                        new Task
-                        {
-                            Name = "Shave",
-                            OrderNumber = 3
-                        }
+                        Task = shower,
+                        OrderNumber = 2
+                    },
+                    new TaskInTaskFlowMap
+                    {
+                        Task = shave,
+                        OrderNumber = 3
                     }
                 }
             };
 
-            context.TaskFlow.AddRange(taskFlows);
+            var eveningFlow = new TaskFlow
+            {
+                Name = "Evening Flow"
+            };
+
+            var dailyFlow = new TaskFlow
+            {
+                Name = "Daily Flows",
+                ChildMaps = new List<TaskFlowInTaskFlowMap>
+                {
+                    new TaskFlowInTaskFlowMap
+                    {
+                        Parent = morningFlow,
+                        OrderNumber = 1
+                    },
+                    new TaskFlowInTaskFlowMap
+                    {
+                        Parent = eveningFlow,
+                        OrderNumber = 2
+                    }
+                }
+            };
+
+            var organizeDay = new Task
+            {
+                Name = "Organize Day",
+                ChildTaskFlowMaps = new List<TaskFlowForTaskMap>
+                {
+                    new TaskFlowForTaskMap
+                    {
+                        Flow = dailyFlow
+                    }
+                }
+            };
+
+            context.Task.Add(organizeDay);
             context.SaveChanges();
         }
     }
